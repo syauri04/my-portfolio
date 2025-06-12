@@ -4,9 +4,10 @@ import Image from "next/image";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import projects from "@/lib/projects";
+import type { Project } from "@/lib/types";
 
 export default function ClientHome() {
-  const [selected, setSelected] = useState(null);
+  const [selected, setSelected] = useState<Project | null>(null);
 
   return (
     <main className="min-h-screen bg-gray-900 text-white px-6 py-10">
@@ -16,7 +17,7 @@ export default function ClientHome() {
         </motion.div>
 
         <motion.h1 className="text-4xl md:text-6xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
-          Hello, I&#39;m Rifan Ahmad Syauri
+          Hello, I&apos;m Rifan Ahmad Syauri
         </motion.h1>
         <motion.h1 className="text-2xl md:text-2xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           Welcome to my portfolio — a showcase of my work, skills, and passion for building modern, interactive, and user-centered web experiences.
