@@ -16,7 +16,7 @@ export default function ClientHome() {
         </motion.div>
 
         <motion.h1 className="text-4xl md:text-6xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
-          Hello, I'm Rifan Ahmad Syauri
+          Hello, I&#39;m Rifan Ahmad Syauri
         </motion.h1>
         <motion.h1 className="text-2xl md:text-2xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           Welcome to my portfolio — a showcase of my work, skills, and passion for building modern, interactive, and user-centered web experiences.
@@ -72,7 +72,10 @@ export default function ClientHome() {
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
-              <Image src={selected.image} alt={selected.title} width={700} height={400} className="w-full h-60 object-cover" />
+              <div className="relative w-full h-60">
+                <Image src={selected.image} alt={selected.title} fill className="object-cover rounded-t-xl" />
+              </div>
+
               <div className="p-6">
                 <h2 className="text-2xl font-bold mb-2">{selected.title}</h2>
                 <p className="whitespace-pre-line text-gray-700 mb-4">{selected.description}</p>
