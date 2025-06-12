@@ -66,13 +66,17 @@ export default function ClientHome() {
         {selected && (
           <motion.div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 backdrop-blur" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={() => setSelected(null)}>
             <motion.div
-              className="bg-white text-black max-w-6xl w-full rounded-xl overflow-hidden shadow-lg max-h-[90vh] overflow-y-auto"
+              className="relative bg-white text-black max-w-6xl w-full rounded-xl overflow-hidden shadow-lg max-h-[90vh] overflow-y-auto"
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.8, opacity: 0 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               onClick={(e) => e.stopPropagation()}
             >
+              <button onClick={() => setSelected(null)} className="absolute top-4 right-4 z-50 text-black hover:text-red-600 text-2xl font-bold" aria-label="Close">
+                &times;
+              </button>
+
               <div className="relative w-full h-60">
                 <Image src={selected.image} alt={selected.title} fill className="object-cover rounded-t-xl" />
               </div>
