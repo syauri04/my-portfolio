@@ -5,30 +5,56 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import projects from "@/lib/projects";
 import type { Project } from "@/lib/types";
+import useLenis from "@/hooks/useLenis";
+import Footer from "@/components/Footer";
 
+const container = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.05, // Jarak antar huruf (detik)
+    },
+  },
+};
+
+const letter = {
+  hidden: { opacity: 0, y: -10 },
+  visible: { opacity: 1, y: 0 },
+};
 export default function ClientHome() {
+  useLenis();
   const [selected, setSelected] = useState<Project | null>(null);
+  const title = `Hello, I'm Rifan Ahmad Syauri`;
 
   return (
-    <main className="min-h-screen bg-gray-900 text-white px-6 py-10">
+    <main className="min-h-screen bg-[#284b63] text-white px-6 py-10">
       <section className="max-w-5xl mx-auto text-center">
         <motion.div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
           <Image src="/images/rifan.png" alt="Foto Profil" width={128} height={128} className="object-cover w-full h-full" />
         </motion.div>
 
-        <motion.h1 className="text-4xl md:text-6xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
-          Hello, I&apos;m Rifan Ahmad Syauri
+        <motion.h1 className="text-4xl md:text-6xl font-bold mb-4 flex justify-center flex-wrap text-center" variants={container} initial="hidden" animate="visible">
+          {title.split("").map((char, index) => (
+            <motion.span key={index} variants={letter}>
+              {char === " " ? "\u00A0" : char}
+            </motion.span>
+          ))}
         </motion.h1>
-        <motion.h1 className="text-2xl md:text-2xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+
+        {/* <motion.h1 className="text-4xl md:text-6xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+          Hello, I&apos;m Rifan Ahmad Syauri
+        </motion.h1> */}
+
+        <motion.h1 className="text-2xl md:text-2xl font-bold mb-4" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.5, duration: 1 }}>
           Welcome to my portfolio — a showcase of my work, skills, and passion for building modern, interactive, and user-centered web experiences.
         </motion.h1>
-        <motion.p className="text-lg text-gray-300" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>
+        <motion.p className="text-lg text-gray-300" initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 1.6, duration: 1 }}>
           Full Stack Web Developer focused on modern digital solutions.{" "}
         </motion.p>
       </section>
 
       <section className="mt-20 max-w-5xl mx-auto">
-        <motion.h2 className="text-2xl font-semibold mb-6" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
+        <motion.h2 className="text-2xl font-semibold mb-6 text-[#90e0ef]" initial={{ opacity: 0, y: -20 }} animate={{ opacity: 1, y: 0 }}>
           Latest Work
         </motion.h2>
 
@@ -93,13 +119,7 @@ export default function ClientHome() {
         )}
       </AnimatePresence>
 
-      <section className="mt-20 max-w-5xl mx-auto">
-        <h2 className="text-2xl font-semibold mb-4">Contact</h2>
-        <p className="text-gray-400 mb-4">Interested in working together? Send a message to please:</p>
-        <a href="mailto:kamu@email.com" className="text-blue-400 underline text-lg">
-          syauri04@gmail.com
-        </a>
-      </section>
+      <Footer />
     </main>
   );
 }

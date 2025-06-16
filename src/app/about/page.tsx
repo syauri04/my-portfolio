@@ -2,10 +2,11 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import Footer from "@/components/Footer";
 
 export default function AboutPage() {
   return (
-    <main className="min-h-screen bg-gray-900 text-white px-6 py-16">
+    <main className="min-h-screen bg-[#284b63] text-white px-6 py-16">
       <section className="max-w-4xl mx-auto text-center">
         <motion.div className="w-32 h-32 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white shadow-lg" initial={{ opacity: 0, scale: 0.8 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.5 }}>
           <Image src="/images/rifan.png" alt="Foto Profil" width={128} height={128} className="object-cover w-full h-full" />
@@ -59,6 +60,8 @@ export default function AboutPage() {
           </div>
         </div>
       </section> */}
+
+      <Footer />
     </main>
   );
 }
